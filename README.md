@@ -79,3 +79,7 @@ abstract class AppDataBase : RoomDatabase() {
 
 }
 ``` 
+## Usage
+```
+val employeeDAO = AppDataBase.getDatabase(this).getDAO()
+```
