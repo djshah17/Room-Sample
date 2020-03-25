@@ -3,7 +3,7 @@ This is a simple example of room library in kotlin.
 
 
 ## Add the below dependencies in your app level build.gradle file
-```
+```gradle
 apply plugin: 'kotlin-kapt'
 
 dependencies {
@@ -13,7 +13,7 @@ kapt "androidx.room:room-compiler:2.2.4"
 ```
 
 ## Create a Entity class which represents a table in the database
-```
+```kotlin
 @Entity(tableName = "Employees")
 data class Employee(
     @ColumnInfo(name = "emp_name") var name: String,
@@ -25,7 +25,7 @@ data class Employee(
 ```    
 
 ## Create a DAO interface which contains all queries
-```
+```kotlin
 @Dao
 interface EmployeeDAO {
 
@@ -51,7 +51,7 @@ interface EmployeeDAO {
 ```
 
 ## Create a Database class which contains all your DAOs
-```
+```kotlin
 @Database(entities = [Employee::class],version = 1)
 abstract class AppDataBase : RoomDatabase() {
 
@@ -83,7 +83,7 @@ abstract class AppDataBase : RoomDatabase() {
 ``` 
 
 ## Usage
-```
+```kotlin
 val employeeDAO = AppDataBase.getDatabase(this).getDAO()
 InsertEmployeeAsyncTask(context,employeeDAO,newEmployee).execute()
 
